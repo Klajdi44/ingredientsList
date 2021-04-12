@@ -4,13 +4,15 @@ import { Data } from '../modules/useFetch';
 type Props = {
   ingredient: Data;
   setData: React.Dispatch<React.SetStateAction<Data[] | null>>;
-  handleClick: () => void;
+  incrementPortion: () => void;
+  decrementPortion: () => void;
+  people: number;
 };
 
 function IngredientsListItem(props: Props) {
-  const { ingredient, handleClick } = props;
+  const { ingredient, people } = props;
   const iconUrl = ingredient.icon.url;
-  console.log(ingredient);
+  // console.log(ingredient);
   const unitNum = ingredient.measure.units[0].perPortion;
   const unitName = ingredient.measure.units[0].name;
 
@@ -30,8 +32,9 @@ function IngredientsListItem(props: Props) {
         </p>
       </details>
       <span className='symmary-right-col'>
-        <h3 onClick={handleClick}>-</h3> {unitNum} {unitName}
-        <h3 onClick={handleClick}>+</h3>
+        <h3 onClick={props.decrementPortion}>-</h3> {Number(unitNum) * people}
+        {unitName}
+        <h3 onClick={props.incrementPortion}>+</h3>
       </span>
     </li>
   );
