@@ -1,3 +1,8 @@
+body,
+html {
+  min-height: 100vh;
+  padding: 0;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,20 +10,84 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--body-color);
 }
 
-:root {
-  --detailsOpend: rgb(202, 234, 202);
-}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
+:root {
+  --detailsOpend: rgb(202, 234, 202);
+  --body-color: #fff;
+  --heading-color: #000;
+  --text-color: #000;
+  --ingredients-list-bgcolor: #fff;
+  --ingredients-list-shadow: -1px -1px 9px 0px rgba(50, 50, 50, 0.3);
+}
+
+.App h1 {
+  text-align: center;
+  margin-top: 0;
+  padding: 0;
+  color: var(--heading-color);
+}
+.App {
+  background: var(--body-color);
+  min-height: 1200px;
+  width: 100vw;
+  padding-top: 60px;
+  color: var(--text-color);
+  transition: all 0.4s ease;
+}
+.dark {
+  --body-color: #212121;
+  --heading-color: var(--detailsOpend);
+  --text-color: #fff;
+  --ingredients-list-bgcolor: #2c2c2c;
+  --ingredients-list-shadow: -1px -1px 9px 0px rgba(175, 165, 165, 0.3);
+}
+.darkmode-btn {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background: #fff;
+  border: 1px solid rgb(217, 207, 207);
+  cursor: pointer;
+  padding: 1em;
+  border-radius: 50%;
+  font-size: 1em;
+}
+
+.darkmode-btn:focus {
+  outline: none;
+}
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.313);
+  padding: 0.5em;
+}
+
+.list-header-left-col {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+}
+
+.list-header-left-col h3 {
+  cursor: pointer;
+}
+
 .ingredients-list {
   max-width: 800px;
-  margin: 5em auto;
-  box-shadow: -1px -1px 9px 0px rgba(50, 50, 50, 0.3);
+  margin: 2em auto 5em auto;
+  box-shadow: var(--ingredients-list-shadow);
+  border-radius: 20px;
+  background: var(--ingredients-list-bgcolor);
 }
 
 .ingredient-icon {
@@ -30,13 +99,18 @@ code {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.6em 0;
+  margin: 0.3em 0;
   background: var(--detailsFix);
+}
+.ingredients-list li:hover {
+  background: var(--detailsOpend);
+  transition: 0.3s ease-in;
+  color: #000;
 }
 
 .ingredients-list ul {
-  padding: 1em 0;
-  max-width: 600px;
+  padding: 0 0 0.5em 0;
+  max-width: 675px;
   margin: 0 auto;
 }
 
@@ -47,7 +121,7 @@ summary {
   display: flex;
   justify-content: space-between;
 }
-summary::-webkit-details-marker {
+summary::marker {
   display: none;
 }
 summary:focus {
@@ -65,11 +139,22 @@ summary:focus {
   align-items: center;
   width: 20%;
 }
+
 .symmary-right-col h3 {
   cursor: pointer;
+  padding: 0.2em;
+}
+.plus-sign {
+  margin-right: 0.5em;
+}
+.minus-sign {
+  margin-left: 0.5em;
 }
 .summary-left-col img {
   margin-right: 10px;
+  background: #fff;
+  padding: 0.3em;
+  border-radius: 50%;
 }
 /* details */
 details {
@@ -79,10 +164,12 @@ details {
 details[open] {
   background: var(--detailsOpend);
   width: 88%;
+  color: #000;
 }
 
 details[open] p {
   animation: fade 0.5s ease-in-out;
+  color: #000;
 }
 
 @keyframes fade {

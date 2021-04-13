@@ -8,20 +8,26 @@ function ListHeader(props: Props) {
   const { people, setPeople } = props;
 
   function decrementPeople() {
-    people !== 0 && setPeople(people - 1);
+    people !== 1 && setPeople(people - 1);
   }
   function incrementPeople() {
     setPeople(people + 1);
   }
   return (
-    <div>
+    <div className='list-header'>
       <article className='list-header-left-col'>
-        <span onClick={decrementPeople}>-</span>
-        <span>{people}</span>
-        <span onClick={incrementPeople}>+</span>
+        <h3 onClick={decrementPeople}>
+          <i className='fas fa-minus'></i>
+        </h3>
+        <span>People {people}</span>
+        <h3 onClick={incrementPeople}>
+          <i className='fas fa-plus'></i>
+        </h3>
       </article>
       <article className='list-header-right-col'>
-        <span>20 min</span>
+        <span>
+          <i className='far fa-clock'></i> 20 min
+        </span>
       </article>
     </div>
   );

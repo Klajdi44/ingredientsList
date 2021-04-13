@@ -26,15 +26,25 @@ function IngredientsListItem(props: Props) {
           </span>
         </summary>
         <p>
-          Epcot is a theme park at Walt Disney World Resort featuring exciting
-          attractions, international pavilions, award-winning fireworks and
-          seasonal special events.
+          <i className='fas fa-exchange-alt'></i> Classic {ingredient.name}
+        </p>
+        <p>
+          <i className='fas fa-exchange-alt'></i> Spicy {ingredient.name}
+        </p>
+        <p>
+          <i className='fas fa-exchange-alt'></i> BBQ {ingredient.name}
         </p>
       </details>
       <span className='symmary-right-col'>
-        <h3 onClick={props.decrementPortion}>-</h3> {Number(unitNum) * people}
-        {unitName}
-        <h3 onClick={props.incrementPortion}>+</h3>
+        <h3 className='minus-sign' onClick={props.decrementPortion}>
+          <i className='fas fa-minus'></i>
+        </h3>
+        <span>
+          {Number(unitNum) * people} {unitName}
+        </span>
+        <h3 className='plus-sign' onClick={props.incrementPortion}>
+          <i className='fas fa-plus'></i>
+        </h3>
       </span>
     </li>
   );

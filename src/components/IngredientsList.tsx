@@ -50,11 +50,8 @@ function IngredientsList(props: Props) {
 
   return (
     <div>
-      <ListHeader 
-      people={people}
-      setPeople={setPeople}
-       />
       <ul>
+        <ListHeader people={people} setPeople={setPeople} />
         {data.map((ingredient, index) => (
           <IngredientsListItem
             ingredient={ingredient}
