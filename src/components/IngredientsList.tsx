@@ -17,7 +17,7 @@ function IngredientsList(props: Props) {
     setData(addIdToList);
   }, []);
 
-  function handleClick(index: number, ingredient: Data, mathOperator: string) {
+  function updatePortion(index: number, ingredient: Data, mathOperator: string) {
     const clonedDataArray = [...data];
 
     clonedDataArray[index] = {
@@ -42,10 +42,10 @@ function IngredientsList(props: Props) {
     }
   }
   function icrementPortion(index: number, ingredient: Data) {
-    handleClick(index, ingredient, '+');
+    updatePortion(index, ingredient, '+');
   }
   function decrementPortion(index: number, ingredient: Data) {
-    handleClick(index, ingredient, '-');
+    updatePortion(index, ingredient, '-');
   }
 
   return (

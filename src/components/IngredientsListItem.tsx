@@ -12,7 +12,6 @@ type Props = {
 function IngredientsListItem(props: Props) {
   const { ingredient, people } = props;
   const iconUrl = ingredient.icon.url;
-  // console.log(ingredient);
   const unitNum = ingredient.measure.units[0].perPortion;
   const unitName = ingredient.measure.units[0].name;
 

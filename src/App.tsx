@@ -11,7 +11,6 @@ function App() {
   );
   function handleClick() {
     setDarkmode(!darkMode);
-    console.log(darkMode);
   }
   return (
     <section className={darkMode ? 'App dark' : 'App'}>
